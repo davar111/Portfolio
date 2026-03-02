@@ -116,6 +116,27 @@ nav.scrolled {
   color: var(--bg);
 }
 
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--fg);
+  font-family: "Neue Montreal", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  cursor: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.hero-mobile-links,
+.hero-mobile-status {
+  display: none;
+}
+
 #hero {
   min-height: 100svh;
   display: grid;
@@ -197,4 +218,194 @@ nav.scrolled {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--dim);
+}
+
+@media (max-width: 900px) {
+  nav {
+    padding: 14px var(--pad);
+    gap: 10px;
+    justify-content: space-between;
+    background: rgba(10, 10, 10, 0.92);
+    border-color: var(--border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .nav-time {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: var(--fg);
+    pointer-events: none;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open nav {
+    background: #efefef;
+    border-color: rgba(0, 0, 0, 0.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  body.menu-open .nav-name,
+  body.menu-open .nav-time,
+  body.menu-open .nav-mobile-toggle {
+    color: #0a0a0a;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 90;
+    background: #efefef;
+    color: #0a0a0a;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+  }
+
+  body.menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-menu-inner {
+    min-height: 100svh;
+    padding-top: 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobile-menu-links {
+    padding: 26px var(--pad) 18px;
+    display: grid;
+    gap: 4px;
+  }
+
+  .mobile-menu-link {
+    font-size: clamp(44px, 12vw, 62px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: #0a0a0a;
+  }
+
+  .mobile-menu-social {
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+    padding: 12px var(--pad) 16px;
+  }
+
+  .mobile-menu-social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .mobile-menu-social-grid a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .mobile-menu-inquiries {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #efefef;
+    background: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 18px var(--pad);
+    font-size: clamp(34px, 9vw, 48px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .mobile-menu-inquiries::after {
+    content: "\2197";
+    font-size: 0.78em;
+    line-height: 1;
+  }
+
+  #hero {
+    min-height: 100svh;
+    padding: 72px var(--pad) 24px;
+  }
+
+  .hero-mobile-links {
+    display: none;
+    position: absolute;
+    left: var(--pad);
+    bottom: clamp(106px, 14vh, 140px);
+    z-index: 1;
+    gap: 2px;
+  }
+
+  .hero-mobile-links a {
+    font-size: clamp(48px, 12vw, 68px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  .hero-mobile-status {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    left: var(--pad);
+    bottom: 28px;
+    z-index: 1;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--dim);
+  }
+
+  .hero-foot {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 12px;
+    padding-top: 0;
+    border-top: 0;
+    position: absolute;
+    left: var(--pad);
+    right: var(--pad);
+    bottom: 24px;
+    z-index: 1;
+  }
+
+  .hero-location {
+    display: none;
+  }
+
+  .hero-avail {
+    justify-content: flex-end;
+    text-align: right;
+  }
 }

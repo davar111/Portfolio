@@ -6,6 +6,7 @@ import { initHeroWebGL } from "./modules/hero-webgl.js";
 import { initEntrances, initScrollReveal } from "./modules/scroll-reveal.js";
 import { initAccordion } from "./modules/accordion.js";
 import { initBehancePreview } from "./modules/behance-preview.js";
+import { initMobileMenu } from "./modules/mobile-menu.js";
 
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
@@ -43,9 +44,13 @@ initHeroWebGL({ THREE: window.THREE, isTouch });
 initEntrances({ gsap });
 initScrollReveal({ gsap, ScrollTrigger });
 initAccordion();
+initMobileMenu();
 
 // twinkling dots in hero
 (() => {
+  const isMobile = window.matchMedia("(max-width: 900px)").matches;
+  if (isTouch || isMobile) return;
+
   const canvas = document.getElementById("dots-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");

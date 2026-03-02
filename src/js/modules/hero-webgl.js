@@ -3,6 +3,8 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
 
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
+  const isMobile = window.matchMedia("(max-width: 900px)").matches;
+  if (isTouch) return;
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -15,6 +17,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   camera.position.z = 3.8;
+  let baseSphereScale = isMobile ? 0.78 : 1;
 
   const resize = () => {
     const width = Math.max(1, canvas.clientWidth);
@@ -22,6 +25,9 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    const isCurrentMobile = width <= 900;
+    const isNarrow = width <= 1280 || height <= 760;
+    baseSphereScale = isCurrentMobile ? 0.78 : isNarrow ? 0.9 : 1;
   };
   resize();
 
@@ -182,6 +188,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
 
     const bob = Math.sin(elapsed * 0.75) * 0.05;
     container.position.y = bob;
+    container.scale.setScalar(baseSphereScale);
     container.rotation.y = elapsed * 0.11 + mouse.x * 0.45;
     container.rotation.x = elapsed * 0.055 + mouse.y * 0.32;
     container.rotation.z = Math.sin(elapsed * 0.33) * 0.035;

@@ -151,3 +151,20 @@
   font-weight: 400;
   max-width: 62ch;
 }
+
+@media (max-width: 900px) {
+  .accordion {
+    margin-top: 18px;
+  }
+
+  .acc-trigger {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  .acc-body-inner {
+    padding: 0 0 16px;
+    font-size: 13px;
+    line-height: 1.58;
+  }
+}
