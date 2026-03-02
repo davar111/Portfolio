@@ -4,7 +4,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
   const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  if (isTouch) return;
+  const isStatic = isTouch || isMobile;
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -17,7 +17,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   camera.position.z = 3.8;
-  let baseSphereScale = isMobile ? 0.78 : 1;
+  let baseSphereScale = isStatic ? 0.72 : 1;
 
   const resize = () => {
     const width = Math.max(1, canvas.clientWidth);
@@ -25,16 +25,16 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    const isCurrentMobile = width <= 900;
+    const isCurrentMobile = width <= 900 || isTouch;
     const isNarrow = width <= 1280 || height <= 760;
-    baseSphereScale = isCurrentMobile ? 0.78 : isNarrow ? 0.9 : 1;
+    baseSphereScale = isCurrentMobile ? 0.72 : isNarrow ? 0.9 : 1;
   };
   resize();
 
   const container = new THREE.Group();
   scene.add(container);
 
-  const detail = isTouch ? 1 : 2; // lower detail, but evenly distributed polygons
+  const detail = isStatic ? 1 : 2;
   const sourceGeometry = new THREE.IcosahedronGeometry(1, detail).toNonIndexed();
   const sourcePositions = sourceGeometry.getAttribute("position");
 
@@ -75,11 +75,17 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
     const tx = targetPositions[idx + 0];
     const ty = targetPositions[idx + 1];
     const tz = targetPositions[idx + 2];
-    const radius = 4.8 + Math.random() * 2.2; // fills hero area at startup
+    const radius = 4.8 + Math.random() * 2.2;
 
-    startPositions[idx + 0] = tx * radius + (Math.random() - 0.5) * 0.16;
-    startPositions[idx + 1] = ty * radius + (Math.random() - 0.5) * 0.16;
-    startPositions[idx + 2] = tz * radius + (Math.random() - 0.5) * 0.16;
+    if (isStatic) {
+      startPositions[idx + 0] = tx;
+      startPositions[idx + 1] = ty;
+      startPositions[idx + 2] = tz;
+    } else {
+      startPositions[idx + 0] = tx * radius + (Math.random() - 0.5) * 0.16;
+      startPositions[idx + 1] = ty * radius + (Math.random() - 0.5) * 0.16;
+      startPositions[idx + 2] = tz * radius + (Math.random() - 0.5) * 0.16;
+    }
 
     currentPositions[idx + 0] = startPositions[idx + 0];
     currentPositions[idx + 1] = startPositions[idx + 1];
@@ -122,7 +128,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const linesMaterial = new THREE.LineBasicMaterial({
     color: 0x5d5d5d,
     transparent: true,
-    opacity: 0.0,
+    opacity: isStatic ? 0.2 : 0.0,
   });
   const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
   container.add(lines);
@@ -131,14 +137,48 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const mouse = { x: 0, y: 0 };
   let progress = 0;
 
-  if (!isTouch) {
+  if (!isStatic) {
     window.addEventListener("mousemove", (event) => {
       target.x = (event.clientX / window.innerWidth - 0.5) * 1.25;
       target.y = -(event.clientY / window.innerHeight - 0.5) * 1.25;
     });
   }
 
-  window.addEventListener("resize", resize);
+  const updateLinePositions = () => {
+    let cursor = 0;
+    for (let i = 0; i < edges.length; i += 1) {
+      const a = edges[i][0] * 3;
+      const b = edges[i][1] * 3;
+
+      linePositions[cursor + 0] = currentPositions[a + 0];
+      linePositions[cursor + 1] = currentPositions[a + 1];
+      linePositions[cursor + 2] = currentPositions[a + 2];
+      linePositions[cursor + 3] = currentPositions[b + 0];
+      linePositions[cursor + 4] = currentPositions[b + 1];
+      linePositions[cursor + 5] = currentPositions[b + 2];
+      cursor += 6;
+    }
+  };
+
+  const renderStatic = () => {
+    updateLinePositions();
+    particlesGeometry.attributes.position.needsUpdate = true;
+    linesGeometry.attributes.position.needsUpdate = true;
+    container.position.y = 0;
+    container.scale.setScalar(baseSphereScale);
+    container.rotation.set(0.15, -0.25, 0.04);
+    renderer.render(scene, camera);
+  };
+
+  window.addEventListener("resize", () => {
+    resize();
+    if (isStatic) renderStatic();
+  });
+
+  if (isStatic) {
+    renderStatic();
+    return;
+  }
 
   const clock = new THREE.Clock();
   const animate = () => {
@@ -166,19 +206,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
       currentPositions[idx + 2] = sz + (tz - sz) * eased + Math.sin(elapsed * 1.1 + i * 0.11) * jitter;
     }
 
-    let cursor = 0;
-    for (let i = 0; i < edges.length; i += 1) {
-      const a = edges[i][0] * 3;
-      const b = edges[i][1] * 3;
-
-      linePositions[cursor + 0] = currentPositions[a + 0];
-      linePositions[cursor + 1] = currentPositions[a + 1];
-      linePositions[cursor + 2] = currentPositions[a + 2];
-      linePositions[cursor + 3] = currentPositions[b + 0];
-      linePositions[cursor + 4] = currentPositions[b + 1];
-      linePositions[cursor + 5] = currentPositions[b + 2];
-      cursor += 6;
-    }
+    updateLinePositions();
 
     particlesGeometry.attributes.position.needsUpdate = true;
     linesGeometry.attributes.position.needsUpdate = true;

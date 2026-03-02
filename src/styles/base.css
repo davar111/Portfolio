@@ -26,3 +26,19 @@ body::after {
   opacity: 0;
   transform: translateY(20px);
 }
+
+@media (max-width: 900px) {
+  body {
+    cursor: auto;
+  }
+
+  a,
+  button {
+    cursor: auto !important;
+  }
+
+  #cur,
+  #cur-ring {
+    display: none !important;
+  }
+}

@@ -1,7 +1,13 @@
 export const initCursor = ({ gsap, isTouch }) => {
   const cur = document.getElementById("cur");
   const ring = document.getElementById("cur-ring");
-  if (!cur || !ring || isTouch) {
+  if (!cur || !ring) {
+    return;
+  }
+
+  if (isTouch || window.matchMedia("(max-width: 900px)").matches) {
+    cur.style.display = "none";
+    ring.style.display = "none";
     return;
   }
 
