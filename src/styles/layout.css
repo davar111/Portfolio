@@ -358,13 +358,12 @@ nav.scrolled {
   }
 
   .mobile-menu-inquiries::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-top: 1.5px solid currentColor;
-    border-right: 1.5px solid currentColor;
-    transform: translateY(-1px) rotate(45deg);
-    flex-shrink: 0;
+    content: "\2197\FE0E";
+    font-family: "Neue Montreal", sans-serif;
+    font-size: 0.82em;
+    line-height: 1;
+    font-weight: 400;
+    transform: translateY(-1px);
   }
 
   #hero {
