@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name &mdash; Designer</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=neue-montreal@300,400,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/styles/tokens.css">
+  <link rel="stylesheet" href="./src/styles/base.css">
+  <link rel="stylesheet" href="./src/styles/layout.css">
+  <link rel="stylesheet" href="./src/styles/components.css">
+  <link rel="stylesheet" href="./src/styles/sections.css">
+</head>
+<body>
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+
+  <nav id="nav">
+    <a href="#" class="nav-name">David Ryazanov</a>
+    <span class="nav-time" id="nav-time">--:-- --</span>
+    <ul class="nav-links">
+      <li>
+        <a href="#work" class="nav-link">Work</a>
+      </li>
+      <li>
+        <a href="#about" class="nav-link">About</a>
+      </li>
+      <li>
+        <a href="#contact" class="nav-link">Contact.</a>
+      </li>
+    </ul>
+    <a href="#contact" class="nav-cta">
+      <span>Inquiries &rarr;</span>
+    </a>
+  </nav>
+
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-foot">
+      <div class="hero-role">
+        Designer &amp; creative developer<br>
+        focused on digital craft.
+      </div>
+      <div class="hero-location">
+        47&#176;N 135&#176;E
+      </div>
+      <div class="hero-avail">
+        <span class="avail-dot"></span>
+        Available for projects
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div>
+      <span class="label sr">About</span>
+      <h2 class="about-headline sr">
+        Designing with intention,<br>
+        <em class="about-nowrap">not decoration.</em>
+      </h2>
+    </div>
+    <div>
+      <div class="accordion sr">
+        <div class="acc-item">
+          <button class="acc-trigger">Web Development <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner">From concept to production. Sites that perform as well as they look &mdash; built with clean code and attention to every interaction.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger">Animation &amp; Interaction <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner">GSAP animations, WebGL effects, scroll-driven storytelling. Turning static layouts into something that feels alive.</div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger">Website Layout <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner">Grid systems, spatial composition, typographic hierarchy &mdash; structure that makes everything feel intentional.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <span class="label">Selected Work</span>
+      <span class="label">04 Projects</span>
+    </div>
+    <div class="work-grid">
+      <a href="#" class="work-item">
+        <div class="work-item-bg"></div>
+        <span class="work-item-placeholder">Image</span>
+        <div class="work-item-content">
+          <div class="work-item-top">
+            <span class="work-item-num">01</span>
+            <span class="work-item-year">2025</span>
+          </div>
+          <div class="work-item-bottom">
+            <p class="work-item-name">Project Name</p>
+            <div class="work-item-tags">
+              <span class="work-tag">Art Direction</span>
+              <span class="work-tag">Web Design</span>
+              <span class="work-tag">Development</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="work-item">
+        <div class="work-item-bg"></div>
+        <span class="work-item-placeholder">Image</span>
+        <div class="work-item-content">
+          <div class="work-item-top">
+            <span class="work-item-num">02</span>
+            <span class="work-item-year">2025</span>
+          </div>
+          <div class="work-item-bottom">
+            <p class="work-item-name">Project Name</p>
+            <div class="work-item-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">Identity</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="work-item">
+        <div class="work-item-bg"></div>
+        <span class="work-item-placeholder">Image</span>
+        <div class="work-item-content">
+          <div class="work-item-top">
+            <span class="work-item-num">03</span>
+            <span class="work-item-year">2024</span>
+          </div>
+          <div class="work-item-bottom">
+            <p class="work-item-name">Project Name</p>
+            <div class="work-item-tags">
+              <span class="work-tag">Web Design</span>
+              <span class="work-tag">Motion</span>
+              <span class="work-tag">3D</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="work-item">
+        <div class="work-item-bg"></div>
+        <span class="work-item-placeholder">Image</span>
+        <div class="work-item-content">
+          <div class="work-item-top">
+            <span class="work-item-num">04</span>
+            <span class="work-item-year">2024</span>
+          </div>
+          <div class="work-item-bottom">
+            <p class="work-item-name">Project Name</p>
+            <div class="work-item-tags">
+              <span class="work-tag">Art Direction</span>
+              <span class="work-tag">3D</span>
+              <span class="work-tag">Development</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-handwrite">
+      <div class="contact-scribble" aria-hidden="true">
+        <svg viewBox="0 0 1200 600" class="contact-scribble-svg">
+          <path
+            class="contact-scribble-path"
+            d="M 950 90 C 1250 300, 1050 480, 600 520 C 250 520, 150 480, 150 300 C 150 120, 350 80, 600 80 C 850 80, 950 180, 950 180"
+          />
+        </svg>
+      </div>
+      <h2 class="contact-title contact-title-center">Let's work together.</h2>
+      <a href="mailto:ryazanovdavid52@gmail.com" class="contact-email contact-email-center">ryazanovdavid52@gmail.com &rarr;</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">&copy;2026 David Ryazanov</span>
+    <ul class="footer-socials">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Behance</a></li>
+      <li><a href="#">LinkedIn</a></li>
+    </ul>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>

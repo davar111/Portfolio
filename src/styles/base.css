@@ -1,0 +1,17 @@
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Neue Montreal", sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.sr {
+  opacity: 0;
+  transform: translateY(20px);
+}
