@@ -358,9 +358,13 @@ nav.scrolled {
   }
 
   .mobile-menu-inquiries::after {
-    content: "\2197";
-    font-size: 0.78em;
-    line-height: 1;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: translateY(-1px) rotate(45deg);
+    flex-shrink: 0;
   }
 
   #hero {
