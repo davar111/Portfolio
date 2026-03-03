@@ -82,12 +82,12 @@ nav.scrolled {
   background: transparent;
   color: var(--dim);
   font-family: "Neue Montreal", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: none;
-  line-height: 1;
+  line-height: normal;
   transition: color 0.24s ease, opacity 0.24s ease;
 }
 
@@ -314,7 +314,7 @@ nav.scrolled {
   }
 
   .nav-lang-btn {
-    font-size: 10px;
+    font-size: 14px;
     color: var(--fg);
   }
 
