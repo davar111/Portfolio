@@ -38,47 +38,57 @@ export const initScrollReveal = ({ gsap, ScrollTrigger }) => {
     stagger: 0.09,
   });
 
-  const aboutHeadline = document.querySelector(".about-headline");
-  if (aboutHeadline) {
-    if (!aboutHeadline.dataset.fillReady) {
-      const textNodes = [];
-      const walker = document.createTreeWalker(
-        aboutHeadline,
-        NodeFilter.SHOW_TEXT,
-        {
-          acceptNode: (node) =>
-            node.nodeValue && node.nodeValue.trim()
-              ? NodeFilter.FILTER_ACCEPT
-              : NodeFilter.FILTER_REJECT,
-        }
-      );
+  let aboutFillTween = null;
+  const setupAboutHeadlineFill = () => {
+    const aboutHeadline = document.querySelector(".about-headline");
+    if (!aboutHeadline) return;
 
-      while (walker.nextNode()) {
-        textNodes.push(walker.currentNode);
+    if (aboutFillTween) {
+      if (aboutFillTween.scrollTrigger) {
+        aboutFillTween.scrollTrigger.kill();
       }
-
-      textNodes.forEach((node) => {
-        const fragment = document.createDocumentFragment();
-        node.nodeValue.split(/(\s+)/).forEach((token) => {
-          if (!token) return;
-          if (/^\s+$/.test(token)) {
-            fragment.appendChild(document.createTextNode(token));
-            return;
-          }
-          const word = document.createElement("span");
-          word.className = "about-fill-word";
-          word.textContent = token;
-          fragment.appendChild(word);
-        });
-        node.parentNode.replaceChild(fragment, node);
-      });
-
-      aboutHeadline.dataset.fillReady = "1";
+      aboutFillTween.kill();
+      aboutFillTween = null;
     }
 
+    aboutHeadline.querySelectorAll(".about-fill-word").forEach((word) => {
+      word.replaceWith(document.createTextNode(word.textContent || ""));
+    });
+    aboutHeadline.normalize();
+
+    const textNodes = [];
+    const walker = document.createTreeWalker(aboutHeadline, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) =>
+        node.nodeValue && node.nodeValue.trim()
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT,
+    });
+
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach((node) => {
+      const fragment = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach((token) => {
+        if (!token) return;
+        if (/^\s+$/.test(token)) {
+          fragment.appendChild(document.createTextNode(token));
+          return;
+        }
+        const word = document.createElement("span");
+        word.className = "about-fill-word";
+        word.textContent = token;
+        fragment.appendChild(word);
+      });
+      node.parentNode.replaceChild(fragment, node);
+    });
+
     const words = aboutHeadline.querySelectorAll(".about-fill-word");
+    if (words.length === 0) return;
+
     gsap.set(words, { color: "rgba(255, 255, 255, 0.32)" });
-    gsap.to(words, {
+    aboutFillTween = gsap.to(words, {
       color: "rgba(255, 255, 255, 1)",
       ease: "none",
       stagger: 0.22,
@@ -89,7 +99,10 @@ export const initScrollReveal = ({ gsap, ScrollTrigger }) => {
         scrub: true,
       },
     });
-  }
+  };
+
+  setupAboutHeadlineFill();
+  document.addEventListener("site:language-change", setupAboutHeadlineFill);
 
   const contactPath = document.querySelector(".contact-scribble-path");
   const contactTitle = document.querySelector(".contact-title-center");

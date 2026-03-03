@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Ryazanov &mdash; Web Developer</title>
+  <title>David Ryazanov &mdash; Веб-разработчик</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=neue-montreal@300,400,500&display=swap" rel="stylesheet">
@@ -23,27 +23,31 @@
     <span class="nav-time" id="nav-time">--:-- --</span>
     <ul class="nav-links">
       <li>
-        <a href="#work" class="nav-link">Work</a>
+        <a href="#work" class="nav-link" data-i18n="nav.work">Работы</a>
       </li>
       <li>
-        <a href="#about" class="nav-link">About</a>
+        <a href="#about" class="nav-link" data-i18n="nav.about">Обо мне</a>
       </li>
       <li>
-        <a href="#contact" class="nav-link">Contact.</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Контакты</a>
       </li>
     </ul>
+    <div class="nav-lang" role="group" aria-label="Language switcher">
+      <button type="button" class="nav-lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+      <button type="button" class="nav-lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
     <a href="#contact" class="nav-cta">
-      <span>Inquiries &rarr;</span>
+      <span><span data-i18n="nav.inquiries">Запросы</span> &rarr;</span>
     </a>
-    <button class="nav-mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    <button class="nav-mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Меню</button>
   </nav>
 
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <div class="mobile-menu-inner">
       <div class="mobile-menu-links">
-        <a href="#work" class="mobile-menu-link">Work</a>
-        <a href="#about" class="mobile-menu-link">About</a>
-        <a href="#contact" class="mobile-menu-link">Contact</a>
+        <a href="#work" class="mobile-menu-link" data-i18n="nav.work">Работы</a>
+        <a href="#about" class="mobile-menu-link" data-i18n="nav.about">Обо мне</a>
+        <a href="#contact" class="mobile-menu-link" data-i18n="nav.contact">Контакты</a>
       </div>
 
       <div class="mobile-menu-social">
@@ -54,7 +58,7 @@
         </div>
       </div>
 
-      <a href="#contact" class="mobile-menu-inquiries">Inquiries</a>
+      <a href="#contact" class="mobile-menu-inquiries" data-i18n="mobile.inquiries">Запросы</a>
     </div>
   </div>
 
@@ -62,50 +66,48 @@
     <canvas id="dots-canvas"></canvas>
     <canvas id="hero-canvas"></canvas>
     <div class="hero-mobile-links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#work" data-i18n="nav.work">Работы</a>
+      <a href="#about" data-i18n="nav.about">Обо мне</a>
+      <a href="#contact" data-i18n="nav.contact">Контакты</a>
     </div>
     <div class="hero-mobile-status">
       <span class="avail-dot"></span>
-      Available for projects
+      <span data-i18n="hero.available">Доступен для проектов</span>
     </div>
     <div class="hero-foot">
-      <div class="hero-role">
-        Designer &amp; creative developer<br>
-        focused on digital craft.
+      <div class="hero-role" data-i18n-html="hero.roleHtml">
+        Дизайнер и креативный разработчик &mdash; про качество и детали
       </div>
       <div class="hero-location">
         47&#176;N 135&#176;E
       </div>
       <div class="hero-avail">
         <span class="avail-dot"></span>
-        Available for projects
+        <span data-i18n="hero.available">Доступен для проектов</span>
       </div>
     </div>
   </section>
 
   <section id="about">
     <div>
-      <span class="label sr">About</span>
-      <h2 class="about-headline sr">
-        Designing with intention,<br>
-        <em class="about-nowrap">not decoration.</em>
+      <span class="label sr" data-i18n="about.label">Обо мне</span>
+      <h2 class="about-headline sr" data-i18n-html="about.headlineHtml">
+        Дизайн, который помогает продукту
       </h2>
     </div>
     <div>
       <div class="accordion sr">
         <div class="acc-item">
-          <button class="acc-trigger">Web Development <span class="acc-icon"></span></button>
-          <div class="acc-body"><div class="acc-body-inner">From concept to production. Sites that perform as well as they look &mdash; built with clean code and attention to every interaction.</div></div>
+          <button class="acc-trigger"><span data-i18n="about.acc.web.title">Веб-разработка</span> <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner" data-i18n="about.acc.web.body">Сайты под ключ: от концепта до продакшена &mdash; чистая реализация и продуманные состояния</div></div>
         </div>
         <div class="acc-item">
-          <button class="acc-trigger">Animation &amp; Interaction <span class="acc-icon"></span></button>
-          <div class="acc-body"><div class="acc-body-inner">GSAP animations, WebGL effects, scroll-driven storytelling. Turning static layouts into something that feels alive.</div></div>
+          <button class="acc-trigger"><span data-i18n="about.acc.motion.title">Анимация и интерактив</span> <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner" data-i18n="about.acc.motion.body">GSAP, WebGL, анимации на скролле &mdash; когда нужно добавить динамики и вовлечения</div></div>
         </div>
         <div class="acc-item">
-          <button class="acc-trigger">Website Layout <span class="acc-icon"></span></button>
-          <div class="acc-body"><div class="acc-body-inner">Grid systems, spatial composition, typographic hierarchy &mdash; structure that makes everything feel intentional.</div></div>
+          <button class="acc-trigger"><span data-i18n="about.acc.layout.title">Компоновка сайта</span> <span class="acc-icon"></span></button>
+          <div class="acc-body"><div class="acc-body-inner" data-i18n="about.acc.layout.body">Сетки, типографика, иерархия &mdash; чтобы всё держалось на структуре</div></div>
         </div>
       </div>
     </div>
@@ -113,58 +115,58 @@
 
   <section id="work">
     <div class="section-head">
-      <span class="label">Selected Work</span>
-      <span class="label">04 Projects</span>
+      <span class="label" data-i18n="work.label">Избранные работы</span>
+      <span class="label" data-i18n="work.count">04 Проекта</span>
     </div>
     <div class="work-grid">
       <a href="#" class="work-item">
         <div class="work-item-bg"></div>
-        <span class="work-item-placeholder">Image</span>
+        <span class="work-item-placeholder" data-i18n="work.placeholder">Изображение</span>
         <div class="work-item-content">
           <div class="work-item-top">
             <span class="work-item-num">01</span>
             <span class="work-item-year">2025</span>
           </div>
           <div class="work-item-bottom">
-            <p class="work-item-name">Project Name</p>
+            <p class="work-item-name" data-i18n="work.projectName">Название проекта</p>
             <div class="work-item-tags">
-              <span class="work-tag">Art Direction</span>
-              <span class="work-tag">Web Design</span>
-              <span class="work-tag">Development</span>
+              <span class="work-tag" data-i18n="work.tag.artDirection">Арт-дирекшн</span>
+              <span class="work-tag" data-i18n="work.tag.webDesign">Веб-дизайн</span>
+              <span class="work-tag" data-i18n="work.tag.development">Разработка</span>
             </div>
           </div>
         </div>
       </a>
       <a href="#" class="work-item">
         <div class="work-item-bg"></div>
-        <span class="work-item-placeholder">Image</span>
+        <span class="work-item-placeholder" data-i18n="work.placeholder">Изображение</span>
         <div class="work-item-content">
           <div class="work-item-top">
             <span class="work-item-num">02</span>
             <span class="work-item-year">2025</span>
           </div>
           <div class="work-item-bottom">
-            <p class="work-item-name">Project Name</p>
+            <p class="work-item-name" data-i18n="work.projectName">Название проекта</p>
             <div class="work-item-tags">
-              <span class="work-tag">Branding</span>
-              <span class="work-tag">Identity</span>
+              <span class="work-tag" data-i18n="work.tag.branding">Брендинг</span>
+              <span class="work-tag" data-i18n="work.tag.identity">Айдентика</span>
             </div>
           </div>
         </div>
       </a>
       <a href="#" class="work-item">
         <div class="work-item-bg"></div>
-        <span class="work-item-placeholder">Image</span>
+        <span class="work-item-placeholder" data-i18n="work.placeholder">Изображение</span>
         <div class="work-item-content">
           <div class="work-item-top">
             <span class="work-item-num">03</span>
             <span class="work-item-year">2024</span>
           </div>
           <div class="work-item-bottom">
-            <p class="work-item-name">Project Name</p>
+            <p class="work-item-name" data-i18n="work.projectName">Название проекта</p>
             <div class="work-item-tags">
-              <span class="work-tag">Web Design</span>
-              <span class="work-tag">Motion</span>
+              <span class="work-tag" data-i18n="work.tag.webDesign">Веб-дизайн</span>
+              <span class="work-tag" data-i18n="work.tag.motion">Моушн</span>
               <span class="work-tag">3D</span>
             </div>
           </div>
@@ -172,18 +174,18 @@
       </a>
       <a href="#" class="work-item">
         <div class="work-item-bg"></div>
-        <span class="work-item-placeholder">Image</span>
+        <span class="work-item-placeholder" data-i18n="work.placeholder">Изображение</span>
         <div class="work-item-content">
           <div class="work-item-top">
             <span class="work-item-num">04</span>
             <span class="work-item-year">2024</span>
           </div>
           <div class="work-item-bottom">
-            <p class="work-item-name">Project Name</p>
+            <p class="work-item-name" data-i18n="work.projectName">Название проекта</p>
             <div class="work-item-tags">
-              <span class="work-tag">Art Direction</span>
+              <span class="work-tag" data-i18n="work.tag.artDirection">Арт-дирекшн</span>
               <span class="work-tag">3D</span>
-              <span class="work-tag">Development</span>
+              <span class="work-tag" data-i18n="work.tag.development">Разработка</span>
             </div>
           </div>
         </div>
@@ -201,7 +203,7 @@
           />
         </svg>
       </div>
-      <h2 class="contact-title contact-title-center">Let's work together.</h2>
+      <h2 class="contact-title contact-title-center" data-i18n="contact.title">Давайте работать вместе</h2>
       <a href="mailto:ryazanovdavid52@gmail.com" class="contact-email contact-email-center">ryazanovdavid52@gmail.com &rarr;</a>
     </div>
   </section>
@@ -222,3 +224,5 @@
   <script type="module" src="./src/js/main.js"></script>
 </body>
 </html>
+
+

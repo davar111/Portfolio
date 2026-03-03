@@ -7,6 +7,7 @@ import { initEntrances, initScrollReveal } from "./modules/scroll-reveal.js";
 import { initAccordion } from "./modules/accordion.js";
 import { initBehancePreview } from "./modules/behance-preview.js";
 import { initMobileMenu } from "./modules/mobile-menu.js";
+import { initI18n } from "./modules/i18n.js";
 
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
@@ -37,14 +38,26 @@ if (lenis) {
   });
 }
 
-initClock("nav-time");
+const i18n = initI18n();
+
+initClock("nav-time", {
+  t: i18n.t,
+  getLanguage: i18n.getLanguage,
+  onLanguageChange: i18n.onLanguageChange,
+});
 initCursor({ gsap, isTouch });
 initScramble({ isTouch, prefersReduced });
 initHeroWebGL({ THREE: window.THREE, isTouch });
 initEntrances({ gsap });
 initScrollReveal({ gsap, ScrollTrigger });
+i18n.onLanguageChange(() => {
+  ScrollTrigger.refresh();
+});
 initAccordion();
-initMobileMenu();
+initMobileMenu({
+  t: i18n.t,
+  onLanguageChange: i18n.onLanguageChange,
+});
 
 // twinkling dots in hero
 (() => {
@@ -114,4 +127,7 @@ initMobileMenu();
 
 ScrollTrigger.refresh();
 
-initBehancePreview().catch(() => {});
+initBehancePreview({
+  getLanguage: i18n.getLanguage,
+  onLanguageChange: i18n.onLanguageChange,
+}).catch(() => {});
