@@ -231,7 +231,7 @@ nav.scrolled {
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--dim);
-  line-height: 1.6;
+  line-height: 1.25;
 }
 
 .hero-location {
@@ -240,6 +240,7 @@ nav.scrolled {
   color: var(--dim);
   text-align: center;
   letter-spacing: 0.01em;
+  line-height: 1.25;
 }
 
 .hero-avail {
@@ -248,6 +249,7 @@ nav.scrolled {
   color: var(--dim);
   text-align: right;
   letter-spacing: 0.01em;
+  line-height: 1.25;
   display: flex;
   align-items: center;
   justify-content: flex-end;
