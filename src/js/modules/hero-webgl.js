@@ -34,7 +34,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   const container = new THREE.Group();
   scene.add(container);
 
-  const detail = isStatic ? 1 : 2;
+  const detail = isStatic ? 0 : 1;
   const sourceGeometry = new THREE.IcosahedronGeometry(1, detail).toNonIndexed();
   const sourcePositions = sourceGeometry.getAttribute("position");
 
