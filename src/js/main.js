@@ -59,6 +59,60 @@ initMobileMenu({
   onLanguageChange: i18n.onLanguageChange,
 });
 
+// animated grain overlay across the full page
+(() => {
+  const canvas = document.createElement("canvas");
+  canvas.id = "noise-canvas";
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
+  if (!ctx) return;
+
+  const SCALE = 1.2;
+  const FPS = 24;
+  const FRAME_MS = 1000 / FPS;
+  const ALPHA = 30;
+  let width = 0;
+  let height = 0;
+  let imageData = null;
+  let pixels = null;
+  let lastFrame = 0;
+
+  const resize = () => {
+    width = Math.max(1, Math.ceil(window.innerWidth / SCALE));
+    height = Math.max(1, Math.ceil(window.innerHeight / SCALE));
+    canvas.width = width;
+    canvas.height = height;
+    imageData = ctx.createImageData(width, height);
+    pixels = imageData.data;
+  };
+
+  const drawFrame = () => {
+    if (!pixels) return;
+    for (let i = 0; i < pixels.length; i += 4) {
+      const value = (Math.random() * 256) | 0;
+      pixels[i + 0] = value;
+      pixels[i + 1] = value;
+      pixels[i + 2] = value;
+      pixels[i + 3] = ALPHA;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  };
+
+  const tick = (now) => {
+    window.requestAnimationFrame(tick);
+    if (now - lastFrame < FRAME_MS) return;
+    lastFrame = now;
+    drawFrame();
+  };
+
+  resize();
+  drawFrame();
+  window.addEventListener("resize", resize);
+
+  window.requestAnimationFrame(tick);
+})();
+
 // twinkling dots in hero
 (() => {
   const isMobile = window.matchMedia("(max-width: 900px)").matches;

@@ -207,9 +207,9 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   linesGeometry.attributes.position.setUsage(THREE.DynamicDrawUsage);
 
   const linesMaterial = new THREE.LineBasicMaterial({
-    color: 0x5d5d5d,
+    color: 0x8f8f8f,
     transparent: true,
-    opacity: isStatic ? 0.2 : 0.0,
+    opacity: isStatic ? 0.28 : 0.0,
   });
   const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
   container.add(lines);
@@ -293,7 +293,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
     linesGeometry.attributes.position.needsUpdate = true;
 
     const lineFade = Math.max(0, (eased - 0.15) / 0.85);
-    linesMaterial.opacity = 0.02 + lineFade * 0.2;
+    linesMaterial.opacity = 0.08 + lineFade * 0.28;
 
     const bob = Math.sin(elapsed * 0.75) * 0.05;
     container.position.y = bob;
