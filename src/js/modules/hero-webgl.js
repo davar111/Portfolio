@@ -1,16 +1,97 @@
-export const initHeroWebGL = ({ THREE, isTouch }) => {
-  if (!THREE) return;
+const initHeroFallback = (canvas, isTouch) => {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
 
+  const drawFallback = () => {
+    const width = Math.max(1, canvas.clientWidth);
+    const height = Math.max(1, canvas.clientHeight);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    const radius = Math.min(width, height) * (isTouch ? 0.16 : 0.21);
+    const cx = width * 0.5;
+    const cy = height * 0.5;
+
+    const ringCount = 14;
+    ctx.strokeStyle = "rgba(255,255,255,0.12)";
+    ctx.lineWidth = 1;
+    for (let i = 0; i < ringCount; i += 1) {
+      const p = i / Math.max(1, ringCount - 1);
+      const y = (p - 0.5) * radius * 1.6;
+      const ringRadius = Math.sqrt(Math.max(0, radius * radius - y * y));
+      if (ringRadius < 2) continue;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + y * 0.5, ringRadius, ringRadius * 0.42, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = "rgba(255,255,255,0.16)";
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, radius, radius * 0.42, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    const pointCount = isTouch ? 110 : 180;
+    ctx.fillStyle = "rgba(243,243,243,0.9)";
+    for (let i = 0; i < pointCount; i += 1) {
+      const a = (Math.PI * 2 * i) / pointCount;
+      const lat = Math.sin(i * 0.91) * 0.95;
+      const y = lat * radius;
+      const ringRadius = Math.sqrt(Math.max(0, radius * radius - y * y));
+      const x = Math.cos(a) * ringRadius;
+      const z = Math.sin(a) * ringRadius;
+      const depth = (z / radius + 1) * 0.5;
+      const px = cx + x;
+      const py = cy + y * 0.5;
+      const r = 0.6 + depth * 0.9;
+      const alpha = 0.26 + depth * 0.62;
+
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.arc(px, py, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+  };
+
+  drawFallback();
+  window.addEventListener("resize", drawFallback);
+};
+
+export const initHeroWebGL = ({ THREE, isTouch }) => {
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
+  if (!THREE) {
+    initHeroFallback(canvas, isTouch);
+    return;
+  }
+
   const isMobile = window.matchMedia("(max-width: 900px)").matches;
   const isStatic = isTouch || isMobile;
 
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: true,
-  });
+  let renderer = null;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+    });
+  } catch (_) {
+    initHeroFallback(canvas, isTouch);
+    return;
+  }
+
+  const gl = renderer.getContext?.();
+  if (!gl) {
+    renderer.dispose?.();
+    initHeroFallback(canvas, isTouch);
+    return;
+  }
+
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
