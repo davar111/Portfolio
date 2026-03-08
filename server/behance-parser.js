@@ -125,7 +125,7 @@ export const parseBehanceCase = async (url, options = {}) => {
             [...tagsFromArray, ...tagsFromKeywords].filter((value) => {
               if (!value) return false;
               if (/^https?:\/\//i.test(value)) return false;
-              return /[A-Za-z0-9]/.test(value);
+              return /[\p{L}\p{N}]/u.test(value);
             })
           ),
         ].slice(0, 12);
@@ -444,7 +444,7 @@ export const parseBehanceCase = async (url, options = {}) => {
         const textCandidates = deepCollect(module, (value) => {
           if (value.length < 18) return false;
           if (/^https?:\/\//i.test(value)) return false;
-          return /[A-Za-z0-9]/.test(value);
+          return /[\p{L}\p{N}]/u.test(value);
         });
 
         const mainUrl = pickBestMediaUrl([...new Set(mediaUrls)]);
@@ -614,7 +614,7 @@ export const parseBehanceCase = async (url, options = {}) => {
           [...tagsFromArray, ...tagsFromKeywords].filter((value) => {
             if (!value) return false;
             if (/^https?:\/\//i.test(value)) return false;
-            return /[A-Za-z0-9]/.test(value);
+            return /[\p{L}\p{N}]/u.test(value);
           })
         ),
       ].slice(0, 12);

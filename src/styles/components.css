@@ -90,6 +90,11 @@
   color: var(--fg);
 }
 
+.acc-trigger:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.48) !important;
+  outline-offset: 4px;
+}
+
 .acc-item,
 .acc-body,
 .acc-body-inner,
