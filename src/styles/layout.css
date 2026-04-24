@@ -56,7 +56,7 @@ nav.scrolled {
   color: var(--dim);
   text-decoration: none;
   transition: color 0.2s;
-  cursor: none;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
@@ -86,7 +86,7 @@ nav.scrolled {
   font-weight: 400;
   letter-spacing: 0.01em;
   text-transform: none;
-  cursor: none;
+  cursor: pointer;
   line-height: normal;
   transition: color 0.24s ease, opacity 0.24s ease;
 }
@@ -124,7 +124,7 @@ nav.scrolled {
   text-decoration: none;
   border: 1px solid var(--border);
   padding: 8px 16px;
-  cursor: none;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -132,6 +132,7 @@ nav.scrolled {
   align-items: center;
   gap: 8px;
   transition: border-color 0.3s;
+  cursor: pointer;
 }
 
 .nav-cta::before {
@@ -172,7 +173,7 @@ nav.scrolled {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.01em;
-  cursor: none;
+  cursor: pointer;
 }
 
 .mobile-menu {

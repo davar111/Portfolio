@@ -62,7 +62,7 @@ const initHeroFallback = (canvas, isTouch) => {
   window.addEventListener("resize", drawFallback);
 };
 
-export const initHeroWebGL = ({ THREE, isTouch }) => {
+export const initHeroWebGL = ({ THREE, isTouch, prefersReduced = false }) => {
   const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
   if (!THREE) {
@@ -71,7 +71,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   }
 
   const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  const isStatic = isTouch || isMobile;
+  const isStatic = prefersReduced || isTouch || isMobile;
 
   let renderer = null;
   try {
@@ -116,7 +116,7 @@ export const initHeroWebGL = ({ THREE, isTouch }) => {
   scene.add(container);
 
   const detail = isStatic ? 0 : 1;
-  const sourceGeometry = new THREE.IcosahedronGeometry(1, detail).toNonIndexed();
+  const sourceGeometry = new THREE.IcosahedronGeometry(1, detail);
   const sourcePositions = sourceGeometry.getAttribute("position");
 
   const targetVertices = [];

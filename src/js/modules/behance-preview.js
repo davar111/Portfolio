@@ -9,14 +9,14 @@ const STATIC_PROJECTS = {
     },
     {
       title: "AquaVelis - корпоративный сайт",
-      image: "./assets/images/aquavelis-card-cover.png",
+      image: "./assets/images/aquavelis-card-cover-thumb.jpg",
       tags: ["Веб-дизайн", "Корпоративный", "Разработка"],
       year: "2026",
       url: "https://www.behance.net/gallery/235920449/AquaVelis-Corporate-website",
     },
     {
       title: "DJI Matrice 30 - лендинг",
-      image: "./assets/images/dji-matrice-30-cover.png",
+      image: "./assets/images/dji-matrice-30-cover-thumb.jpg",
       tags: ["Лендинг", "Веб-дизайн", "Моушн"],
       year: "2026",
       url: "https://www.behance.net/gallery/228574921/Dji-Matrice-30-Landing-page",
@@ -39,14 +39,14 @@ const STATIC_PROJECTS = {
     },
     {
       title: "AquaVelis - Corporate Website",
-      image: "./assets/images/aquavelis-card-cover.png",
+      image: "./assets/images/aquavelis-card-cover-thumb.jpg",
       tags: ["Web Design", "Corporate", "Development"],
       year: "2026",
       url: "https://www.behance.net/gallery/235920449/AquaVelis-Corporate-website",
     },
     {
       title: "DJI Matrice 30 - Landing Page",
-      image: "./assets/images/dji-matrice-30-cover.png",
+      image: "./assets/images/dji-matrice-30-cover-thumb.jpg",
       tags: ["Landing Page", "Web Design", "Motion"],
       year: "2026",
       url: "https://www.behance.net/gallery/228574921/Dji-Matrice-30-Landing-page",

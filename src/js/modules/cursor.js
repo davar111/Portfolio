@@ -11,6 +11,8 @@ export const initCursor = ({ gsap, isTouch }) => {
     return;
   }
 
+  document.documentElement.classList.add("has-custom-cursor");
+
   window.addEventListener("mousemove", (event) => {
     gsap.to(cur, { x: event.clientX, y: event.clientY, duration: 0.08 });
     gsap.to(ring, {

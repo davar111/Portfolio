@@ -12,20 +12,25 @@ import { initI18n } from "./modules/i18n.js";
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
 
-if (!gsap || !ScrollTrigger) {
-  throw new Error("GSAP and ScrollTrigger are required.");
-}
-
-gsap.registerPlugin(ScrollTrigger);
-
 const isTouch = "ontouchstart" in window;
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canUseMotion = Boolean(gsap && ScrollTrigger);
 
-const lenis = initLenis({
-  gsap,
-  ScrollTrigger,
-  Lenis: window.Lenis,
-});
+if (gsap && ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+if (!canUseMotion) {
+  document.documentElement.classList.add("motion-disabled");
+}
+
+const lenis = canUseMotion
+  ? initLenis({
+      gsap,
+      ScrollTrigger,
+      Lenis: window.Lenis,
+    })
+  : null;
 
 const nav = document.getElementById("nav");
 if (lenis) {
@@ -45,14 +50,16 @@ initClock("nav-time", {
   getLanguage: i18n.getLanguage,
   onLanguageChange: i18n.onLanguageChange,
 });
-initCursor({ gsap, isTouch });
-initScramble({ isTouch, prefersReduced });
+if (canUseMotion) {
+  initCursor({ gsap, isTouch });
+  initScramble({ isTouch, prefersReduced });
+  initEntrances({ gsap });
+  initScrollReveal({ gsap, ScrollTrigger });
+  i18n.onLanguageChange(() => {
+    ScrollTrigger.refresh();
+  });
+}
 initHeroWebGL({ THREE: window.THREE, isTouch });
-initEntrances({ gsap });
-initScrollReveal({ gsap, ScrollTrigger });
-i18n.onLanguageChange(() => {
-  ScrollTrigger.refresh();
-});
 initAccordion();
 initMobileMenu({
   t: i18n.t,
@@ -61,6 +68,8 @@ initMobileMenu({
 
 // animated grain overlay across the full page
 (() => {
+  if (prefersReduced) return;
+
   const canvas = document.createElement("canvas");
   canvas.id = "noise-canvas";
   document.body.appendChild(canvas);
@@ -116,7 +125,7 @@ initMobileMenu({
 // twinkling dots in hero
 (() => {
   const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  if (isTouch || isMobile) return;
+  if (prefersReduced || isTouch || isMobile) return;
 
   const canvas = document.getElementById("dots-canvas");
   if (!canvas) return;
@@ -179,7 +188,9 @@ initMobileMenu({
   window.requestAnimationFrame(draw);
 })();
 
-ScrollTrigger.refresh();
+if (canUseMotion) {
+  ScrollTrigger.refresh();
+}
 
 initBehancePreview({
   getLanguage: i18n.getLanguage,

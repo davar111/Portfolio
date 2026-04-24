@@ -8,6 +8,12 @@ body {
   font-family: "Neue Montreal", sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+  cursor: auto;
+}
+
+html.has-custom-cursor body,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
   cursor: none;
 }
 
@@ -24,6 +30,15 @@ body {
 .sr {
   opacity: 0;
   transform: translateY(20px);
+}
+
+html.motion-disabled .sr {
+  opacity: 1;
+  transform: none;
+}
+
+html.motion-disabled .avail-dot {
+  animation: none;
 }
 
 @media (max-width: 900px) {

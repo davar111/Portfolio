@@ -75,7 +75,7 @@
   font-weight: 500;
   letter-spacing: 0.015em;
   text-transform: uppercase;
-  cursor: none;
+  cursor: pointer;
   text-align: left;
   transition: color 0.2s ease;
   outline: none;
@@ -97,10 +97,8 @@
 
 .acc-item,
 .acc-body,
-.acc-body-inner,
-.acc-trigger {
+.acc-body-inner {
   border-left: 0 !important;
-  outline: none !important;
   box-shadow: none !important;
 }
 
