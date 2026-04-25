@@ -24,25 +24,6 @@
   transform: translate(-50%, -50%);
 }
 
-.avail-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f1f1f1;
-  flex-shrink: 0;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
 .accordion {
   margin-top: 34px;
   border-top: 1px solid var(--border);

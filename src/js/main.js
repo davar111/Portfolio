@@ -2,8 +2,10 @@ import { initLenis } from "./modules/lenis.js";
 import { initClock } from "./modules/clock.js";
 import { initCursor } from "./modules/cursor.js";
 import { initScramble } from "./modules/scramble.js";
-import { initHeroWebGL } from "./modules/hero-webgl.js";
-import { initEntrances, initScrollReveal } from "./modules/scroll-reveal.js";
+import { initPreloader } from "./modules/preloader.js";
+import { initHeroProjects } from "./modules/hero-projects.js";
+import { initHeroAlignment } from "./modules/hero-align.js";
+import { initEntrances, initScrollReveal, prepareHeroEntrances } from "./modules/scroll-reveal.js";
 import { initAccordion } from "./modules/accordion.js";
 import { initBehancePreview } from "./modules/behance-preview.js";
 import { initMobileMenu } from "./modules/mobile-menu.js";
@@ -50,16 +52,27 @@ initClock("nav-time", {
   getLanguage: i18n.getLanguage,
   onLanguageChange: i18n.onLanguageChange,
 });
+initHeroAlignment();
 if (canUseMotion) {
   initCursor({ gsap, isTouch });
   initScramble({ isTouch, prefersReduced });
-  initEntrances({ gsap });
-  initScrollReveal({ gsap, ScrollTrigger });
+  prepareHeroEntrances({ gsap });
+  initPreloader({
+    gsap,
+    onComplete: () => {
+      initEntrances({ gsap });
+      initHeroProjects({ gsap, prefersReduced });
+      initScrollReveal({ gsap, ScrollTrigger });
+      ScrollTrigger.refresh();
+    },
+  });
   i18n.onLanguageChange(() => {
     ScrollTrigger.refresh();
   });
+} else {
+  initPreloader({ prefersReduced: true });
+  initHeroProjects({ prefersReduced });
 }
-initHeroWebGL({ THREE: window.THREE, isTouch });
 initAccordion();
 initMobileMenu({
   t: i18n.t,
@@ -120,72 +133,6 @@ initMobileMenu({
   window.addEventListener("resize", resize);
 
   window.requestAnimationFrame(tick);
-})();
-
-// twinkling dots in hero
-(() => {
-  const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  if (prefersReduced || isTouch || isMobile) return;
-
-  const canvas = document.getElementById("dots-canvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
-  let dots = [];
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  function createDot() {
-    return {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.2 + 0.3,
-      maxAlpha: Math.random() * 0.5 + 0.15,
-      born: performance.now(),
-      life: Math.random() * 4000 + 2000,
-    };
-  }
-
-  for (let i = 0; i < 60; i += 1) {
-    const d = createDot();
-    d.born -= Math.random() * d.life;
-    dots.push(d);
-  }
-
-  function draw(now) {
-    window.requestAnimationFrame(draw);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    dots.forEach((d, i) => {
-      const age = now - d.born;
-      const progress = age / d.life;
-
-      if (progress > 1) {
-        dots[i] = createDot();
-        dots[i].born = now;
-        return;
-      }
-
-      const alpha =
-        progress < 0.3
-          ? (progress / 0.3) * d.maxAlpha
-          : progress > 0.7
-            ? ((1 - progress) / 0.3) * d.maxAlpha
-            : d.maxAlpha;
-
-      ctx.beginPath();
-      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-      ctx.fill();
-    });
-  }
-
-  window.requestAnimationFrame(draw);
 })();
 
 if (canUseMotion) {

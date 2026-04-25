@@ -471,20 +471,6 @@ footer {
     margin-top: 8px;
   }
 
-  .hero-foot {
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-  }
-
-  .hero-location {
-    display: none;
-  }
-
-  .hero-avail {
-    justify-content: flex-end;
-    text-align: right;
-  }
-
   #contact {
     padding: clamp(74px, 14vw, 96px) var(--pad) 56px;
   }

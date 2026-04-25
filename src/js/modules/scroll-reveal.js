@@ -1,18 +1,55 @@
-export const initEntrances = ({ gsap }) => {
-  gsap.from("nav", {
-    opacity: 0,
-    duration: 0.6,
-    ease: "power2.out",
-    delay: 0.1,
-  });
+export const prepareHeroEntrances = ({ gsap }) => {
+  gsap.set("nav", { opacity: 0 });
+  gsap.set(".hero-kicker", { opacity: 0, x: -18 });
+  gsap.set(".hero-project-preview", { opacity: 0, y: 18 });
+  gsap.set(".hero-cross-line-x", { scaleX: 0 });
+  gsap.set(".hero-cross-line-y", { scaleY: 0 });
+  gsap.set(".hero-cross-dot", { opacity: 0, scale: 0.72 });
+  gsap.set(".hero-tool", { opacity: 0, y: 14 });
+};
 
-  gsap.from(".hero-foot", {
-    opacity: 0,
-    y: 12,
-    duration: 0.8,
-    ease: "power3.out",
-    delay: 0.35,
-  });
+export const initEntrances = ({ gsap }) => {
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.to("nav", {
+    opacity: 1,
+    duration: 0.6,
+  }, 0.12)
+    .to(".hero-kicker", {
+      opacity: 1,
+      x: 0,
+      duration: 0.55,
+      ease: "expo.out",
+    }, 0.2)
+    .to(".hero-cross-line-x", {
+      scaleX: 1,
+      duration: 0.85,
+      ease: "power3.inOut",
+    }, 0.18)
+    .to(".hero-cross-line-y", {
+      scaleY: 1,
+      duration: 0.85,
+      ease: "power3.inOut",
+    }, 0.26)
+    .to(".hero-cross-dot", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.38,
+      ease: "power3.out",
+    }, 0.64)
+    .to(".hero-project-preview", {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: "power3.out",
+    }, 0.42)
+    .to(".hero-tool", {
+      opacity: 1,
+      y: 0,
+      duration: 0.44,
+      stagger: 0.06,
+      ease: "power3.out",
+    }, 0.54);
 };
 
 export const initScrollReveal = ({ gsap, ScrollTrigger }) => {

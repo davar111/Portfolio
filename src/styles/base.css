@@ -11,6 +11,51 @@ body {
   cursor: auto;
 }
 
+html.is-loading body {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #0a0a0a;
+  color: #f1f0ec;
+  pointer-events: auto;
+}
+
+.preloader-inner {
+  display: block;
+  width: max-content;
+  max-width: calc(100vw - 48px);
+  transform: translateY(-1vh);
+}
+
+.preloader-name {
+  display: block;
+  position: relative;
+  font-size: clamp(38px, 5.4vw, 86px);
+  line-height: 0.9;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(241, 240, 236, 0.18);
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.preloader-name::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  width: var(--preloader-fill, 0%);
+  overflow: hidden;
+  color: #f1f0ec;
+  white-space: nowrap;
+  will-change: width;
+}
+
 html.has-custom-cursor body,
 html.has-custom-cursor a,
 html.has-custom-cursor button {
@@ -37,8 +82,8 @@ html.motion-disabled .sr {
   transform: none;
 }
 
-html.motion-disabled .avail-dot {
-  animation: none;
+html.motion-disabled .preloader {
+  display: none;
 }
 
 @media (max-width: 900px) {
@@ -54,5 +99,9 @@ html.motion-disabled .avail-dot {
   #cur,
   #cur-ring {
     display: none !important;
+  }
+
+  .preloader-name {
+    font-size: clamp(32px, 10vw, 48px);
   }
 }

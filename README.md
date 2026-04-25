@@ -21,7 +21,6 @@ Static Vanilla setup based on your current visual.
 |        |- clock.js
 |        |- cursor.js
 |        |- scramble.js
-|        |- hero-webgl.js
 |        |- scroll-reveal.js
 |        |- accordion.js
 |        |- behance-preview.js
@@ -76,6 +75,6 @@ Click that card to render the parsed Behance case blocks inside the page (below 
 
 ## Notes
 
-- Stack is still CDN-based: `Three.js`, `GSAP`, `ScrollTrigger`, `Lenis`.
+- Stack is still CDN-based: `GSAP`, `ScrollTrigger`, `Lenis`.
 - Behance parsing runs server-side with `Playwright`.
 - Behavior and visual are kept aligned with your original single-file version, but now modular.
