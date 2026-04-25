@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]: David Ryazanov David Ryazanov
+  - navigation [ref=e5]:
+    - link "David Ryazanov" [ref=e6]:
+      - /url: "#"
+    - generic [ref=e7]: 08:09 PM · FAR EAST
+    - list [ref=e8]:
+      - listitem [ref=e9]:
+        - link "Work" [ref=e10]:
+          - /url: "#work"
+      - listitem [ref=e11]:
+        - link "About" [ref=e12]:
+          - /url: "#about"
+      - listitem [ref=e13]:
+        - link "Contact" [ref=e14]:
+          - /url: "#contact"
+    - group "Language switcher" [ref=e15]:
+      - button "RU" [ref=e16]
+      - button "/ EN" [pressed] [ref=e17]
+    - link "Let's talk →" [ref=e18]:
+      - /url: "#contact"
+      - generic [ref=e19]: Let's talk →
+  - text: /
+  - generic [ref=e21]:
+    - generic [ref=e23]: Creative developer blending aesthetics, motion, and usability into digital experiences
+    - figure "Project preview" [ref=e24]
+    - generic "Tools" [ref=e25]:
+      - generic [ref=e26]:
+        - img [ref=e27]
+        - text: Figma
+      - generic [ref=e28]:
+        - img [ref=e29]
+        - text: After Effects
+      - generic [ref=e30]:
+        - img [ref=e31]
+        - text: Webflow
+      - generic [ref=e32]:
+        - img [ref=e33]
+        - text: Codex
+  - generic [ref=e34]:
+    - generic [ref=e35]:
+      - text: About
+      - heading "Design that supports the product" [level=2] [ref=e36]
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - button "Web development" [ref=e40]:
+          - generic [ref=e41]: Web development
+        - generic [ref=e43]: "Websites end-to-end: from concept to production - clean implementation and well-thought-out states"
+      - generic [ref=e44]:
+        - button "Animation & interactivity" [ref=e45]:
+          - generic [ref=e46]: Animation & interactivity
+        - generic [ref=e48]: GSAP, WebGL, and scroll-based animation - when you need more motion and engagement
+      - generic [ref=e49]:
+        - button "Layout & structure" [ref=e50]:
+          - generic [ref=e51]: Layout & structure
+        - generic [ref=e53]: Grids, typography, hierarchy - to keep everything consistent and structured
+  - generic [ref=e54]:
+    - generic [ref=e55]:
+      - generic [ref=e56]: Selected Work
+      - generic [ref=e57]: 04 Projects
+    - generic [ref=e58]:
+      - link "01 2026 Lumo - Online Cinema (Mobile App) UX/UI Mobile App Product" [ref=e59]:
+        - /url: https://www.behance.net/gallery/240437685/Lumo-Online-Cinema-(Mobile-App)
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: "01"
+            - generic [ref=e64]: "2026"
+          - generic [ref=e65]:
+            - paragraph [ref=e66]: Lumo - Online Cinema (Mobile App)
+            - generic [ref=e67]:
+              - generic [ref=e68]: UX/UI
+              - generic [ref=e69]: Mobile App
+              - generic [ref=e70]: Product
+      - link "02 2026 AquaVelis - Corporate Website Web Design Corporate Development" [ref=e71]:
+        - /url: https://www.behance.net/gallery/235920449/AquaVelis-Corporate-website
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]: "02"
+            - generic [ref=e76]: "2026"
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: AquaVelis - Corporate Website
+            - generic [ref=e79]:
+              - generic [ref=e80]: Web Design
+              - generic [ref=e81]: Corporate
+              - generic [ref=e82]: Development
+      - link "03 2026 DJI Matrice 30 - Landing Page Landing Page Web Design Motion" [ref=e83]:
+        - /url: https://www.behance.net/gallery/228574921/Dji-Matrice-30-Landing-page
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]: "03"
+            - generic [ref=e88]: "2026"
+          - generic [ref=e89]:
+            - paragraph [ref=e90]: DJI Matrice 30 - Landing Page
+            - generic [ref=e91]:
+              - generic [ref=e92]: Landing Page
+              - generic [ref=e93]: Web Design
+              - generic [ref=e94]: Motion
+      - link "04 2026 VoloCity - Product Page Concept Product Page Concept UI/UX" [ref=e95]:
+        - /url: https://www.behance.net/gallery/231137669/VoloCity-Product-Page-Concept
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: "04"
+            - generic [ref=e100]: "2026"
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: VoloCity - Product Page Concept
+            - generic [ref=e103]:
+              - generic [ref=e104]: Product Page
+              - generic [ref=e105]: Concept
+              - generic [ref=e106]: UI/UX
+  - generic [ref=e108]:
+    - generic:
+      - img
+    - heading "Let's work together" [level=2] [ref=e109]
+    - link "ryazanovdavid52@gmail.com →" [ref=e110]:
+      - /url: mailto:ryazanovdavid52@gmail.com
+  - contentinfo [ref=e111]:
+    - generic [ref=e112]: ©2026 David Ryazanov
+    - list [ref=e113]:
+      - listitem [ref=e114]:
+        - link "Instagram" [ref=e115]:
+          - /url: https://www.instagram.com/david.ryazanov/
+      - listitem [ref=e116]:
+        - link "Behance" [ref=e117]:
+          - /url: https://www.behance.net/ecd79bba
+      - listitem [ref=e118]:
+        - link "Telegram" [ref=e119]:
+          - /url: https://t.me/david666r

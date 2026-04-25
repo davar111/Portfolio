@@ -1,16 +1,21 @@
 export const initHeroProjects = ({ gsap, prefersReduced } = {}) => {
+  const preview = document.querySelector(".hero-project-preview");
   const images = Array.from(document.querySelectorAll(".hero-project-image"));
-  if (images.length < 2 || prefersReduced) return;
+  if (!preview || images.length < 2 || preview.dataset.projectCycle === "ready") return;
+
+  preview.dataset.projectCycle = "ready";
 
   let activeIndex = images.findIndex((image) => image.classList.contains("is-active"));
   if (activeIndex < 0) activeIndex = 0;
+  preview.setAttribute("href", images[activeIndex].dataset.href || "#work");
 
   const showNext = () => {
     const previous = images[activeIndex];
     activeIndex = (activeIndex + 1) % images.length;
     const next = images[activeIndex];
+    preview.setAttribute("href", next.dataset.href || "#work");
 
-    if (gsap) {
+    if (gsap && !prefersReduced) {
       gsap.killTweensOf([previous, next]);
       gsap.set(next, { zIndex: 2, scale: 1.04, opacity: 0 });
       gsap.set(previous, { zIndex: 1 });
@@ -35,5 +40,5 @@ export const initHeroProjects = ({ gsap, prefersReduced } = {}) => {
     next.classList.add("is-active");
   };
 
-  window.setInterval(showNext, 3600);
+  window.setInterval(showNext, 7200);
 };

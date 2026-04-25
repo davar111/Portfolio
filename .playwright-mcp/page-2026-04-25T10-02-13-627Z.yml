@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]: David Ryazanov David Ryazanov
+  - navigation [ref=e5]:
+    - link "David Ryazanov" [ref=e6]:
+      - /url: "#"
+    - generic [ref=e7]: 20:02 · ДАЛЬНИЙ ВОСТОК
+    - list [ref=e8]:
+      - listitem [ref=e9]:
+        - link "Работы" [ref=e10]:
+          - /url: "#work"
+      - listitem [ref=e11]:
+        - link "Обо мне" [ref=e12]:
+          - /url: "#about"
+      - listitem [ref=e13]:
+        - link "Контакты" [ref=e14]:
+          - /url: "#contact"
+    - group "Language switcher" [ref=e15]:
+      - button "RU" [pressed] [ref=e16]
+      - button "/ EN" [ref=e17]
+    - link "Связаться →" [ref=e18]:
+      - /url: "#contact"
+      - generic [ref=e19]: Связаться →
+  - text: /
+  - generic [ref=e21]:
+    - generic [ref=e23]: Дизайнер и creative developer, который соединяет эстетику, motion и удобство в digital-опыте
+    - figure "Project preview" [ref=e24]
+    - generic "Tools" [ref=e25]:
+      - generic [ref=e26]:
+        - img [ref=e27]
+        - text: Figma
+      - generic [ref=e28]:
+        - img [ref=e29]
+        - text: After Effects
+      - generic [ref=e30]:
+        - img [ref=e31]
+        - text: Webflow
+      - generic [ref=e32]:
+        - img [ref=e33]
+        - text: Codex
+  - generic [ref=e34]:
+    - generic [ref=e35]:
+      - text: Обо мне
+      - heading "Дизайн, который помогает продукту" [level=2] [ref=e36]
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - button "Веб-разработка" [ref=e40]:
+          - generic [ref=e41]: Веб-разработка
+        - generic [ref=e43]: "Сайты под ключ: от концепта до продакшена - чистая реализация и продуманные состояния"
+      - generic [ref=e44]:
+        - button "Анимация и интерактив" [ref=e45]:
+          - generic [ref=e46]: Анимация и интерактив
+        - generic [ref=e48]: GSAP, WebGL, анимации на скролле - когда нужно добавить динамики и вовлечения
+      - generic [ref=e49]:
+        - button "Компоновка сайта" [ref=e50]:
+          - generic [ref=e51]: Компоновка сайта
+        - generic [ref=e53]: Сетки, типографика, иерархия - чтобы все держалось на структуре
+  - generic [ref=e54]:
+    - generic [ref=e55]:
+      - generic [ref=e56]: Избранные работы
+      - generic [ref=e57]: 04 Проекта
+    - generic [ref=e58]:
+      - link "01 2026 Lumo - онлайн-кинотеатр (мобильное приложение) UX/UI Мобильное приложение Продукт" [ref=e59]:
+        - /url: https://www.behance.net/gallery/240437685/Lumo-Online-Cinema-(Mobile-App)
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: "01"
+            - generic [ref=e64]: "2026"
+          - generic [ref=e65]:
+            - paragraph [ref=e66]: Lumo - онлайн-кинотеатр (мобильное приложение)
+            - generic [ref=e67]:
+              - generic [ref=e68]: UX/UI
+              - generic [ref=e69]: Мобильное приложение
+              - generic [ref=e70]: Продукт
+      - link "02 2026 AquaVelis - корпоративный сайт Веб-дизайн Корпоративный Разработка" [ref=e71]:
+        - /url: https://www.behance.net/gallery/235920449/AquaVelis-Corporate-website
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]: "02"
+            - generic [ref=e76]: "2026"
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: AquaVelis - корпоративный сайт
+            - generic [ref=e79]:
+              - generic [ref=e80]: Веб-дизайн
+              - generic [ref=e81]: Корпоративный
+              - generic [ref=e82]: Разработка
+      - link "03 2026 DJI Matrice 30 - лендинг Лендинг Веб-дизайн Моушн" [ref=e83]:
+        - /url: https://www.behance.net/gallery/228574921/Dji-Matrice-30-Landing-page
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]: "03"
+            - generic [ref=e88]: "2026"
+          - generic [ref=e89]:
+            - paragraph [ref=e90]: DJI Matrice 30 - лендинг
+            - generic [ref=e91]:
+              - generic [ref=e92]: Лендинг
+              - generic [ref=e93]: Веб-дизайн
+              - generic [ref=e94]: Моушн
+      - link "04 2026 VoloCity - концепт продуктовой страницы Продуктовая страница Концепт UI/UX" [ref=e95]:
+        - /url: https://www.behance.net/gallery/231137669/VoloCity-Product-Page-Concept
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: "04"
+            - generic [ref=e100]: "2026"
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: VoloCity - концепт продуктовой страницы
+            - generic [ref=e103]:
+              - generic [ref=e104]: Продуктовая страница
+              - generic [ref=e105]: Концепт
+              - generic [ref=e106]: UI/UX
+  - generic [ref=e108]:
+    - generic:
+      - img
+    - heading "Давайте работать вместе" [level=2] [ref=e109]
+    - link "ryazanovdavid52@gmail.com →" [ref=e110]:
+      - /url: mailto:ryazanovdavid52@gmail.com
+  - contentinfo [ref=e111]:
+    - generic [ref=e112]: ©2026 David Ryazanov
+    - list [ref=e113]:
+      - listitem [ref=e114]:
+        - link "Instagram" [ref=e115]:
+          - /url: https://www.instagram.com/david.ryazanov/
+      - listitem [ref=e116]:
+        - link "Behance" [ref=e117]:
+          - /url: https://www.behance.net/ecd79bba
+      - listitem [ref=e118]:
+        - link "Telegram" [ref=e119]:
+          - /url: https://t.me/david666r

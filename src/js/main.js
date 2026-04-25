@@ -53,6 +53,7 @@ initClock("nav-time", {
   onLanguageChange: i18n.onLanguageChange,
 });
 initHeroAlignment();
+initHeroProjects({ gsap, prefersReduced });
 if (canUseMotion) {
   initCursor({ gsap, isTouch });
   initScramble({ isTouch, prefersReduced });
@@ -61,7 +62,6 @@ if (canUseMotion) {
     gsap,
     onComplete: () => {
       initEntrances({ gsap });
-      initHeroProjects({ gsap, prefersReduced });
       initScrollReveal({ gsap, ScrollTrigger });
       ScrollTrigger.refresh();
     },
@@ -71,7 +71,6 @@ if (canUseMotion) {
   });
 } else {
   initPreloader({ prefersReduced: true });
-  initHeroProjects({ prefersReduced });
 }
 initAccordion();
 initMobileMenu({
