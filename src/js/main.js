@@ -52,7 +52,7 @@ initClock("nav-time", {
   getLanguage: i18n.getLanguage,
   onLanguageChange: i18n.onLanguageChange,
 });
-initHeroAlignment();
+const updateHeroAlignment = initHeroAlignment();
 initHeroProjects({ gsap, prefersReduced });
 if (canUseMotion) {
   initCursor({ gsap, isTouch });
@@ -61,6 +61,7 @@ if (canUseMotion) {
   initPreloader({
     gsap,
     onComplete: () => {
+      updateHeroAlignment();
       initEntrances({ gsap });
       initScrollReveal({ gsap, ScrollTrigger });
       ScrollTrigger.refresh();

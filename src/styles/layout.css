@@ -194,18 +194,6 @@ nav.scrolled {
   color: var(--fg);
 }
 
-#hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: var(--bg);
-  z-index: 2;
-  pointer-events: none;
-}
-
 .hero-cross {
   position: absolute;
   inset: 0;
