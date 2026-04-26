@@ -331,9 +331,8 @@ nav.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: clamp(32px, 4vw, 56px);
+  padding-bottom: 0;
+  margin-bottom: clamp(18px, 2.2vw, 30px);
 }
 
 .label {

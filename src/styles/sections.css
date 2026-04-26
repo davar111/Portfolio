@@ -197,7 +197,6 @@
 
 #contact {
   padding: clamp(100px, 14vw, 160px) var(--pad) clamp(60px, 8vw, 80px);
-  border-top: 1px solid var(--border);
   display: flex;
   justify-content: center;
 }
@@ -411,8 +410,8 @@ footer {
   }
 
   .section-head {
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 0;
   }
 
   .work-grid {
